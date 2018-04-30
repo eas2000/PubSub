@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Subscriber"
         mc:Ignorable="d"
-        Title="Subscriber" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Subscriber" Height="450" Width="460">
+  <Grid>
+    <Label Content="FILTER" HorizontalAlignment="Left" Margin="222,5,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.629" Height="25"/>
+    <ComboBox Name="cbTopics" HorizontalAlignment="Left" Margin="275,8,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.977,-1.17" SelectionChanged="cbTopics_SelectionChanged"/>
+    <Label Content="PRODUCT:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.629" Height="25"/>
+    <ComboBox Name="cbBuses" HorizontalAlignment="Left" Margin="81,8,0,0" 
+              ItemsSource="{Binding Path=Buses}" DisplayMemberPath="Name"
+              VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.977,-1.17" SelectionChanged="cbBuses_SelectionChanged"/>
+    <Label Content="All Topics" HorizontalAlignment="Left" Margin="81,38,0,0" VerticalAlignment="Top"/>
+    <ListBox Name="lbAllTopics" HorizontalAlignment="Left" Height="100" Margin="81,61,0,0"
+             VerticalAlignment="Top" Width="120">
+          <ListBox.ItemContainerStyle>
+            <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                <EventSetter Event="MouseDoubleClick" Handler="lbAllTopics_MouseDoubleClick"/>
+            </Style>
+    </ListBox.ItemContainerStyle>
+    
+    </ListBox>
+    <Label Content="Subscribed topics" HorizontalAlignment="Left" Margin="275,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.697,0.269"/>
+    <ListBox Name ="lbSubscriptions" HorizontalAlignment="Left" Height="100" Margin="275,61,0,0"
+             VerticalAlignment="Top" Width="120">
+            <ListBox.ItemContainerStyle>
+              <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                <EventSetter Event="MouseDoubleClick" Handler="lbSubscriptions_MouseDoubleClick"/>
+              </Style>
+            </ListBox.ItemContainerStyle>
+    </ListBox>
+    <Label Content="MESSAGES" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="81,175,0,0" />
+    <DataGrid Name="dgMessages" HorizontalAlignment="Left" Height="198" Margin="81,201,0,0" VerticalAlignment="Top" Width="314"/>
+
+  </Grid>
 </Window>

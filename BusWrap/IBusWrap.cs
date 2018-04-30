@@ -9,7 +9,14 @@ namespace BusWrap
     public interface IBusWrap
     {
         List<string> GetTopics();
-        List<string> GetMessages();
-  
+        List<PubSubMsg> GetMessages(List<string> topics);
+        List<string> GetTopicsSubscribed();
+        void Subscribe(string topic);
+        void UnSubscribe(string topic);
+        void RegisterListener(IMsgListener listener);
+        void UnregisterListener(IMsgListener listener);
+        void NotifyListeners();
+        void Run_Consume();
+
     }
 }
